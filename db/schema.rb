@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602032339) do
+ActiveRecord::Schema.define(:version => 20130604234903) do
+
+  create_table "animals", :force => true do |t|
+    t.string   "center_xid",     :limit => 8,  :null => false
+    t.integer  "center_url_xid", :limit => 8,  :null => false
+    t.string   "url",                          :null => false
+    t.string   "name",           :limit => 63
+    t.integer  "age"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
 
   create_table "captioned_images", :force => true do |t|
     t.integer  "source_image_id"
@@ -25,9 +35,9 @@ ActiveRecord::Schema.define(:version => 20130602032339) do
   create_table "source_images", :force => true do |t|
     t.string   "category"
     t.string   "url"
-    t.integer  "external_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "animal_id"
   end
 
 end

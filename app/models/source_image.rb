@@ -1,8 +1,10 @@
 class SourceImage < ActiveRecord::Base
-  attr_accessible :category, :external_id, :url
+  attr_accessible :category, :url
+
+  belongs_to :animal
   has_many :captioned_images
   
   def adoption_info_url
-    "http://www.icanimalcenter.org/indexa.php?id=#{external_id}"
+    animal.url
   end
 end
